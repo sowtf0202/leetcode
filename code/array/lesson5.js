@@ -11,16 +11,17 @@
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
+ * https://leetcode-cn.com/problems/two-sum/submissions/
  */
 export default (nums, target) => {
-  let diff
-  let map = {}
-  for (let i = 0; i < nums.length; i++) {
-    diff = target - nums[i]
-    if (diff in map) {
-      return [map[diff], i]
+    let diff
+    let map = {}
+    for (let i = 0; i < nums.length; i++) {
+        diff = target - nums[i]
+        if (diff in map) {
+            return [map[diff], i]
+        }
+        map[nums[i]] = i
     }
-    map[nums[i]] = i
-  }
-  return []
+    return []
 }
