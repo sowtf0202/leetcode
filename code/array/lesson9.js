@@ -1,14 +1,18 @@
 /**
  * created by sowtf on 2020/7/1
  */
-export default (nums) => {
-    let stealMoney = (arr, start, money) => {
-        for (let i = start, len = arr.length; i < len; i += 2) {
-            money += arr[i]
+export default (g, s) => {
+    let gArr = g.sort((a, b) => a - b)
+    let sArr = s.sort((a, b) => a - b)
+    let count = 0
+    for (let i = 0, len1 = gArr.length; i < len1; i++) {
+        for (let j = 0, len2 = sArr.length; j < len2; j++) {
+            if (sArr[j] >= gArr[i]) {
+                count++
+                sArr[j] = -1
+                break
+            }
         }
-        return money
     }
-    let evenStealMoney = stealMoney([...nums], 0, 0)
-    let oddStealMoney = stealMoney([...nums], 1, 0)
-    return Math.max(evenStealMoney, oddStealMoney)
+    return count
 }
